@@ -1,5 +1,9 @@
+import logging
 import os
 import random
+
+# log levels are: critical, error, warning, info, debug and notset
+logging.basicConfig(filename='game.log', level=logging.DEBUG)
 
 CELLS = [(0, 4), (1, 4), (2, 4), (3, 4), (4, 4),
          (0, 3), (1, 3), (2, 3), (3, 3), (4, 3),
@@ -75,6 +79,8 @@ def draw_map(player):
 def game_loop():
     # unpacking the locations
     player, door, monster = get_locations()
+    logging.info('player: {}, door: {}, monster: {}'.format(
+        player, door, monster))
     playing = True
 
     while playing:
